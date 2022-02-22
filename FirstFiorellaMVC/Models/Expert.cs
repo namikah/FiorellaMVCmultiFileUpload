@@ -14,7 +14,6 @@ namespace FirstFiorellaMVC.Models
         public string Image { get; set; }
 
         [NotMapped]
-        [Required]
         public IFormFile Photo { get; set; }
 
         [Required]

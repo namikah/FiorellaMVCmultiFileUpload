@@ -15,27 +15,18 @@
                             <input class="form-control" id="exampleInputUsername1" placeholder="name" asp-for="Name">
                             <span asp-validation-for="Name" class="text-danger"></span>
                         </div>
-                        <div class="form-group">
-                         <input class="form-control change-image" id="change-image" placeholder="name" type="button" value="Change image"> 
+                         <div class="form-group">
+                            <input class="form-control" id="exampleInputUsername1" placeholder="name" asp-for="Photo">
+                            <span asp-validation-for="Photo" class="text-danger"></span>
                         </div>
-                        <div class="form-group">
-                            <input class="form-control" id="exampleInputUsername1" placeholder="name" asp-for="PositionId">
-                            <span asp-validation-for="PositionId" class="text-danger"></span>
-                        </div>
-                        @*  <div class="form-group">
-                            <input class="form-control" id="exampleInputUsername1" placeholder="name" asp-for="Name">
-                            <span asp-validation-for="Name" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                            <a href="#" class="change-image">Change image</a>
-                            </div>
-                            <div class="form-group">
-                            <label>Positions</label>
-                            <select class="form-control form-control-sm selected-position-name" asp-for="PositionId">
-                            @await Component.InvokeAsync("Position", Model.PositionId)
+                         <div class="form-group">
+                            @*Position dropdown list*@
+                            <label for="exampleFormControlSelect3">Positions</label>
+                            <select class="form-control form-control-sm selected-position-name" id="exampleFormControlSelect3" asp-for="PositionId">
+                                @await Component.InvokeAsync("Position", Model.PositionId)
                             </select>
                             <span asp-validation-for="PositionId" class="text-danger"></span>
-                            </div>*@
+                        </div>
                         <button type="submit" class="btn btn-primary me-2">Submit</button>
                         <a class="btn btn-light" asp-action="Index">Cancel</a>
                     </form>
