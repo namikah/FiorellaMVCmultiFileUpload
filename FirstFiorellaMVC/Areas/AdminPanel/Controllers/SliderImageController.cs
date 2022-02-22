@@ -42,6 +42,13 @@ namespace FirstFiorellaMVC.Areas.AdminPanel.Controllers
             if (!ModelState.IsValid)
                 return View();
 
+            var sliderImageCount = await _dbContext.SliderImages.CountAsync();
+            if(sliderImageCount + sliderImage.Photos.Length > 5)
+            {
+                ModelState.AddModelError("Photos", $"You can only {5 - sliderImageCount} images add");
+                return View();
+            }
+
             foreach (var photo in sliderImage.Photos)
             {
                 if (!photo.IsImage())
