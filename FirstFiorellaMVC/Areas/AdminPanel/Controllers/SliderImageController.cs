@@ -1,4 +1,5 @@
-﻿using FirstFiorellaMVC.Data;
+﻿using FirstFiorellaMVC.Areas.AdminPanel.Data;
+using FirstFiorellaMVC.Data;
 using FirstFiorellaMVC.DataAccessLayer;
 using FirstFiorellaMVC.Models;
 using Microsoft.AspNetCore.Hosting;
@@ -24,7 +25,7 @@ namespace FirstFiorellaMVC.Areas.AdminPanel.Controllers
 
         public async Task<IActionResult> Index()
         {
-            ViewBag.SliderImageMaxCount = Constants.SliderImageMaxCount;
+            ViewBag.ImageMaxCount = SliderImageSetting.ImageMaxCount;
             var sliderImages = await _dbContext.SliderImages.OrderByDescending(x=>x.Id).ToListAsync();
 
             return View(sliderImages);
@@ -44,9 +45,9 @@ namespace FirstFiorellaMVC.Areas.AdminPanel.Controllers
                 return View();
 
             var sliderImageCount = await _dbContext.SliderImages.CountAsync();
-            if(sliderImageCount + sliderImage.Photos.Length > Constants.SliderImageMaxCount)
+            if(sliderImageCount + sliderImage.Photos.Length > SliderImageSetting.ImageMaxCount)
             {
-                ModelState.AddModelError("Photos", $"You can only {Constants.SliderImageMaxCount - sliderImageCount} images add");
+                ModelState.AddModelError("Photos", $"You can only {SliderImageSetting.ImageMaxCount - sliderImageCount} images add");
                 return View();
             }
 
