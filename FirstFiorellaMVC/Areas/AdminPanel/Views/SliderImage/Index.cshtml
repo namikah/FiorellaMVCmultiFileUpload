@@ -9,7 +9,7 @@
     <div class="row" style="min-height:350px;">
         <div class="text-right pt-3">
             @{
-                if (sliderImages.Count < 5)
+                if (sliderImages.Count < ViewBag.SliderImageMaxCount)
                 {
                     <a asp-action="Create" class="btn btn-danger btn-icon-text"><i class="ti-upload btn-icon-prepend"></i>Add Blog</a>
                 }
